@@ -17,21 +17,12 @@ TEXT_CYAN = 36
 
 def get_logger() -> logging.Logger:
     """Use this from all files needing to log."""
-    return logging.getLogger("exifread")
+    pass
 
 
 def setup_logger(debug: bool, color: bool) -> None:
     """Configure the logger."""
-
-    if debug:
-        log_level = logging.DEBUG
-    else:
-        log_level = logging.INFO
-
-    logger = get_logger()
-    stream = Handler(log_level, debug, color)
-    logger.addHandler(stream)
-    logger.setLevel(log_level)
+    pass
 
 
 class Formatter(logging.Formatter):
@@ -52,25 +43,7 @@ class Formatter(logging.Formatter):
         logging.Formatter.__init__(self, log_format)
 
     def format(self, record):
-        if self.debug and self.color:
-            if record.levelno >= logging.CRITICAL:
-                color = TEXT_RED
-            elif record.levelno >= logging.ERROR:
-                color = TEXT_RED
-            elif record.levelno >= logging.WARNING:
-                color = TEXT_YELLOW
-            elif record.levelno >= logging.INFO:
-                color = TEXT_GREEN
-            elif record.levelno >= logging.DEBUG:
-                color = TEXT_CYAN
-            else:
-                color = TEXT_NORMAL
-            record.levelname = "\x1b[%sm%s\x1b[%sm" % (
-                color,
-                record.levelname,
-                TEXT_NORMAL,
-            )
-        return logging.Formatter.format(self, record)
+        pass
 
 
 class Handler(logging.StreamHandler):

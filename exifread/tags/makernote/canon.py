@@ -10,15 +10,15 @@ from exifread.tags import SubIfdTagDict
 
 
 def add_one(value):
-    return value + 1
+    pass
 
 
 def subtract_one(value):
-    return value - 1
+    pass
 
 
 def convert_temp(value):
-    return "%d C" % (value - 128)
+    pass
 
 
 TAGS: SubIfdTagDict = {

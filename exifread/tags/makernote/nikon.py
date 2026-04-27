@@ -17,44 +17,7 @@ def ev_bias(seq) -> str:
     reading the Nikon MakerNote.
     http://tomtia.plala.jp/DigitalCamera/MakerNote/index.asp
     """
-
-    if len(seq) < 4:
-        return ""
-    if seq == [252, 1, 6, 0]:
-        return "-2/3 EV"
-    if seq == [253, 1, 6, 0]:
-        return "-1/2 EV"
-    if seq == [254, 1, 6, 0]:
-        return "-1/3 EV"
-    if seq == [0, 1, 6, 0]:
-        return "0 EV"
-    if seq == [2, 1, 6, 0]:
-        return "+1/3 EV"
-    if seq == [3, 1, 6, 0]:
-        return "+1/2 EV"
-    if seq == [4, 1, 6, 0]:
-        return "+2/3 EV"
-    # Handle combinations not in the table.
-    i = seq[0]
-    # Causes headaches for the +/- logic, so special case it.
-    if i == 0:
-        return "0 EV"
-    if i > 127:
-        i = 256 - i
-        ret_str = "-"
-    else:
-        ret_str = "+"
-    step = seq[2]  # Assume third value means the step size
-    whole = i / step
-    i = i % step
-    if whole != 0:
-        ret_str = "%s%s " % (ret_str, str(whole))
-    if i == 0:
-        ret_str += "EV"
-    else:
-        ratio = Ratio(i, step)
-        ret_str = ret_str + str(ratio) + " EV"
-    return ret_str
+    pass
 
 
 # Nikon E99x MakerNote Tags

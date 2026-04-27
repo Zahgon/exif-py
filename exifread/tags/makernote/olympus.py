@@ -10,26 +10,7 @@ from exifread.tags.str_utils import make_string
 
 def special_mode(val: bytes) -> str:
     """Decode Olympus SpecialMode tag in MakerNote"""
-    mode1 = {
-        0: "Normal",
-        1: "Unknown",
-        2: "Fast",
-        3: "Panorama",
-    }
-    mode2 = {
-        0: "Non-panoramic",
-        1: "Left to right",
-        2: "Right to left",
-        3: "Bottom to top",
-        4: "Top to bottom",
-    }
-
-    if not val:
-        return ""
-
-    mode1_val = mode1.get(val[0], "Unknown")
-    mode2_val = mode2.get(val[2], "Unknown")
-    return "%s - Sequence %d - %s" % (mode1_val, val[1], mode2_val)
+    pass
 
 
 TAGS: Dict[int, SubIfdTagDictValue] = {
